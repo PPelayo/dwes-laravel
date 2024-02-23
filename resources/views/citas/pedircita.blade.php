@@ -81,27 +81,29 @@
 
     <main>
         <section>
-            <form action="" method="post">
-                <div><span>Nombre:</span><input type="text" name="nombre" id="nombre" value=""/></div>
+            <form action="{{ route('citas.store') }}" method="post">
+                @csrf
+                <div><span>Nombre:</span><input type="text" name="nombre" id="nombre" value="{{old('nombre')}}"/></div>
 
-                <div><span>Telefono:</span><input type="tel" name="telefono" id="telefono"  value=""/></div>
+                <div><span>Telefono:</span><input type="tel" name="telefono" id="telefono"  value="{{old('telefono')}}"/></div>
 
-                <div><span>Marca del vehiculo:</span><input type="text" name="marca" id="marca"  value=""/></div>
+                <div><span>Marca del vehiculo:</span><input type="text" name="marca" id="marca"  value="{{old('marca')}}"/></div>
 
-                <div><span>Modelo:</span><input type="text" name="modelo" id="modelo"  value=""/></div>
+                <div><span>Modelo:</span><input type="text" name="modelo" id="modelo"  value="{{old('modelo')}}"/></div>
 
-                <div><span>Matricula:</span><input type="text" name="matricula" id="matricula" value=""/></div>
+                <div><span>Matricula:</span><input type="text" name="matricula" id="matricula" value="{{old('matricula')}}"/></div>
                 <div><span>Tipo de lavado:</span>
                     <select name="lavado" id="lavado">
-                        <!-- Lavado por defecto -->
-                        <option value="0">-</option>
+                        @foreach (TiposLavado::all() as $lavado )
+
+                        @endforeach
 
                     </select>
                 </div>
 
                 <div><input type="checkbox" name="llantas" id="llantas">Limpieza de llantas (15€)</input></div>
 
-                <div><span>Fecha:</span><input type="date" name="fecha" id="fecha" value=""/></div>
+                <div><span>Fecha:</span><input type="date" name="fecha" id="fecha" value="{{old('fecha')}}"/></div>
 
 
                 <button type="submit">Realizar pedido</button>

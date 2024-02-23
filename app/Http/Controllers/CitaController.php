@@ -19,7 +19,7 @@ class CitaController extends Controller
      */
     public function create()
     {
-        //
+        return view('citas.pedircita');
     }
 
     /**
@@ -27,7 +27,15 @@ class CitaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos = $request->validate([
+            'nombre' => 'required',
+            'telefono' => 'numeric|digits:9',
+            'marca' => 'required',
+            'modelo' => 'required',
+            'matricula' => 'required'
+        ]);
+
+        return 'Enviando al post';
     }
 
     /**

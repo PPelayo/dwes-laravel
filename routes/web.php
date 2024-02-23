@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CitaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('citas.listado');
+
+    return redirect()->route('citas.create');
 });
+
+
+//En el array deberemos de pasar la clase controller y de segundo argumento el metodo al que queremos acceder
+Route::get('/citas/create', [CitaController::class, 'create'])->name('citas.create'); //El name es un alias interno para no usar la direccion original
+Route::post('citas/store', [CitaController::class, 'store'])->name('citas.store');
