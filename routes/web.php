@@ -23,3 +23,4 @@ Route::get('/', function () {
 //En el array deberemos de pasar la clase controller y de segundo argumento el metodo al que queremos acceder
 Route::get('/citas/create', [CitaController::class, 'create'])->name('citas.create'); //El name es un alias interno para no usar la direccion original
 Route::post('citas/store', [CitaController::class, 'store'])->name('citas.store');
+Route::get('citas/show/{id}', [CitaController::class, 'show'])->name('citas.show');

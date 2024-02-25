@@ -12,5 +12,7 @@ class TiposLavado extends Model
     protected $table = "tipo_lavado";
     public $timestamps = false;
 
+    public $keyType = 'string';
+
 
 }

@@ -2,16 +2,25 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Citas extends Model
 {
-    use HasFactory;
+    // use HasFactory;
+
+    use HasUuids;
 
     protected $table = "citas";
     public $timestamps = false;
+
+    public $incrementing = false;
+
+    public $keyType = 'string';
+
+    protected $fillable = ['entrada', 'salida', 'nombre', 'telefono', 'coche', 'matricula', 'tipo_lavado', 'llantas'];
 
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Citas;
 use App\Rules\FechaValidation;
 use App\Rules\MatriculaValidation;
 use App\Rules\TelefonoValidation;
@@ -30,7 +31,7 @@ class CitaController extends Controller
      */
     public function store(Request $request)
     {
-        $datos = $request->validate([
+        $datosValidos = $request->validate([
             'nombre' => 'required',
             'telefono' => new TelefonoValidation,
             'marca' => 'required',
@@ -39,7 +40,9 @@ class CitaController extends Controller
             'fecha' => new FechaValidation
         ]);
 
-        return 'Enviando al post';
+        $cita = Citas::create($datosValidos);
+
+        $this->show($cita->id);
     }
 
     /**
@@ -47,6 +50,8 @@ class CitaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $cita = Citas::findOrFail($id);
+
+        return view('citas.show', compact('cita'));
     }
 }

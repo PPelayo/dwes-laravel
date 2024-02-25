@@ -3,5 +3,5 @@
     <option value="{{ $op->id}}" @selected($selectTipo == $op->id)>
         {{ $op->descripcion}}
     </option>
-@endforeach
+    @endforeach
 </select>
