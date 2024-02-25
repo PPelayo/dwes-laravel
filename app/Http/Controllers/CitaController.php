@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\FechaValidation;
 use App\Rules\MatriculaValidation;
 use App\Rules\TelefonoValidation;
 use Illuminate\Http\Request;
@@ -34,7 +35,8 @@ class CitaController extends Controller
             'telefono' => new TelefonoValidation,
             'marca' => 'required',
             'modelo' => 'required',
-            'matricula' => new MatriculaValidation
+            'matricula' => new MatriculaValidation,
+            'fecha' => new FechaValidation
         ]);
 
         return 'Enviando al post';

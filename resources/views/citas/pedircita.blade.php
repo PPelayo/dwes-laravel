@@ -1,4 +1,4 @@
-<x-layouts.base title="Hola Mundo">
+<x-layouts.base title="Pedir cita">
 
     <style>
         body{
