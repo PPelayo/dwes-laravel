@@ -2,25 +2,21 @@
 
 namespace App\View\Components;
 
-use App\Models\TiposLavado;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class SelectTipoLavado extends Component
+class MarcarError extends Component
 {
     /**
      * Create a new component instance.
      */
 
-    public $selectTipo;
+    public $error;
 
-    public $listado;
-
-    public function __construct($selectTipo)
+    public function __construct($error)
     {
-        $this->selectTipo = $selectTipo;
-        $this->listado = TiposLavado::all();
+        $this->error = $error;
     }
 
     /**
@@ -28,6 +24,6 @@ class SelectTipoLavado extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.select-tipo-lavado');
+        return view('components.marcar-error');
     }
 }

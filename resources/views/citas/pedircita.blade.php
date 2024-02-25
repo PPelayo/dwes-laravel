@@ -84,27 +84,35 @@
             <form action="{{ route('citas.store') }}" method="post">
                 @csrf
                 <div><span>Nombre:</span><input type="text" name="nombre" id="nombre" value="{{old('nombre')}}"/></div>
-
+                @error('nombre')
+                    <x-MarcarError error="{{$message}}"/>
+                @enderror
                 <div><span>Telefono:</span><input type="tel" name="telefono" id="telefono"  value="{{old('telefono')}}"/></div>
-
+                @error('telefono')
+                    <x-MarcarError error="{{$message}}"/>
+                @enderror
                 <div><span>Marca del vehiculo:</span><input type="text" name="marca" id="marca"  value="{{old('marca')}}"/></div>
-
+                @error('marca')
+                    <x-MarcarError error="{{$message}}"/>
+                @enderror
                 <div><span>Modelo:</span><input type="text" name="modelo" id="modelo"  value="{{old('modelo')}}"/></div>
-
+                @error('modelo')
+                    <x-MarcarError error="{{$message}}"/>
+                @enderror
                 <div><span>Matricula:</span><input type="text" name="matricula" id="matricula" value="{{old('matricula')}}"/></div>
+                @error('matricula')
+                    <x-MarcarError error="{{$message}}"/>
+                @enderror
                 <div><span>Tipo de lavado:</span>
-                    <select name="lavado" id="lavado">
-                        @foreach (TiposLavado::all() as $lavado )
-
-                        @endforeach
-
-                    </select>
+                <x-SelectTipoLavado select-tipo="{{old('tipos_lavado')}}" />
                 </div>
 
                 <div><input type="checkbox" name="llantas" id="llantas">Limpieza de llantas (15€)</input></div>
 
                 <div><span>Fecha:</span><input type="date" name="fecha" id="fecha" value="{{old('fecha')}}"/></div>
-
+                @error('fecha')
+                    <x-MarcarError error="{{$message}}"/>
+                @enderror
 
                 <button type="submit">Realizar pedido</button>
             </form>

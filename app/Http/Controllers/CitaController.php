@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\MatriculaValidation;
+use App\Rules\TelefonoValidation;
 use Illuminate\Http\Request;
 
 class CitaController extends Controller
@@ -29,10 +31,10 @@ class CitaController extends Controller
     {
         $datos = $request->validate([
             'nombre' => 'required',
-            'telefono' => 'numeric|digits:9',
+            'telefono' => new TelefonoValidation,
             'marca' => 'required',
             'modelo' => 'required',
-            'matricula' => 'required'
+            'matricula' => new MatriculaValidation
         ]);
 
         return 'Enviando al post';
