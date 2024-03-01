@@ -25,6 +25,7 @@ Route::get('/', function () {
 Route::get('/citas/create', [CitaController::class, 'create'])->name('citas.create'); //El name es un alias interno para no usar la direccion original
 Route::post('citas/store', [CitaController::class, 'store'])->name('citas.store');
 Route::get('citas/show/{id}', [CitaController::class, 'show'])->name('citas.show');
+Route::get('citas/index/', [CitaController::class, 'index'])->name('citas.index');
 
 
 Route::get('user/create', [UsuariosController::class, 'create'])->name('user.create');

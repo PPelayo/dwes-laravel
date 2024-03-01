@@ -17,7 +17,9 @@ class CitaController extends Controller
      */
     public function index()
     {
-        //
+        $citas = Citas::all();
+
+        return view('citas.index', compact('citas'));
     }
 
     /**
@@ -141,3 +143,4 @@ class CitaController extends Controller
         return view('citas.show', compact('cita'));
     }
 }
+
