@@ -25,7 +25,7 @@ class CitaController extends Controller
      */
     public function create()
     {
-        return view('citas.pedircita');
+        return view('citas.create');
     }
 
     /**
@@ -72,7 +72,7 @@ class CitaController extends Controller
         $cita->save();
 
         //Y mostramos el ticket
-        $this->show($cita->id);
+        return redirect()->route('citas.show', ['id' => $cita->id]);
     }
 
     private function calcularPrecioTotal($lavado, $lavadoLlantas) : float{

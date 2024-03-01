@@ -98,13 +98,13 @@
             <div class="ticket-info-linea">
                 <strong>Tipo Lavado:</strong>
                 <div class="tipo-lavado">
-                    <span>{{$cita->tipoLavado()->descripcion}}</span>
+                    <span>{{$cita->tipoLavado->descripcion}}</span>
                 </div>
             </div>
         </article>
         <hr class="separator">
         <footer>
-            <h2>Total: <span>{{$precio}}€</span></h2>
+            <h2>Total: <span>{{$cita->precio}}€</span></h2>
         </footer>
     </section>
 
