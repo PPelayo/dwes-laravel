@@ -20,7 +20,7 @@ class Citas extends Model
 
     public $keyType = 'string';
 
-    protected $fillable = ['entrada', 'salida', 'nombre', 'telefono', 'coche', 'matricula', 'tipo_lavado', 'llantas'];
+    protected $fillable = ['entrada', 'salida', 'nombre', 'telefono', 'coche', 'matricula', 'tipo_lavado', 'llantas', 'precio'];
 
 
     /**
