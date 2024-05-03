@@ -29,3 +29,6 @@ Route::get('citas/index/', [CitaController::class, 'index'])->name('citas.index'
 
 
 Route::get('user/create', [UsuariosController::class, 'create'])->name('user.create');
+Route::get('auth/login', [UsuariosController::class, 'login'])->name('user.login');
+Route::post('auth/authenticate', [UsuariosController::class, 'authenticate'])->name('user.authenticate');
+Route::get('auth/logout', [UsuariosController::class, 'logout'])->name('user.logout');

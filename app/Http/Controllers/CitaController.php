@@ -9,6 +9,7 @@ use App\Rules\MatriculaValidation;
 use App\Rules\TelefonoValidation;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CitaController extends Controller
 {
@@ -17,6 +18,10 @@ class CitaController extends Controller
      */
     public function index()
     {
+        if(!Auth::check()){
+            return redirect()->route('user.login')->with('error', 'Debes autentificarte para acceder a esta pantalla');
+        }
+
         $citas = Citas::all();
 
         return view('citas.index', compact('citas'));
