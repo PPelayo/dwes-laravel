@@ -16,5 +16,6 @@ class TiposLavado extends Model
 
     public $keyType = 'string';
 
+    protected $fillable = ['descripcion', 'precio', 'tiempo'];
 
 }

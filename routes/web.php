@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CitaController;
+use App\Http\Controllers\LavadosController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +33,6 @@ Route::get('user/create', [UsuariosController::class, 'create'])->name('user.cre
 Route::get('auth/login', [UsuariosController::class, 'login'])->name('user.login');
 Route::post('auth/authenticate', [UsuariosController::class, 'authenticate'])->name('user.authenticate');
 Route::get('auth/logout', [UsuariosController::class, 'logout'])->name('user.logout');
+
+Route::get('lavados/crear', [LavadosController::class, 'create'])->name('lavados.create');
+Route::get('lavados', [LavadosController::class, 'listar'])->name('lavados.listar');

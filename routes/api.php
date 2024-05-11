@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LavadosController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/', function (Request $request) {
-    return 'Hola Mundo';
-});
+// Route::get('/', function (Request $request) {
+//     return 'Hola Mundo';
+// });
+
+Route::post('/lavados/validate', [LavadosController::class, 'validateRequest'])->name('lavados.validate');
+Route::post('/lavados', [LavadosController::class, 'store'])->name('lavados.store');
+
