@@ -25,4 +25,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/lavados/validate', [LavadosController::class, 'validateRequest'])->name('lavados.validate');
 Route::post('/lavados', [LavadosController::class, 'store'])->name('lavados.store');
-
+Route::get('/lavados', [LavadosController::class, 'get'])->name('lavados.getall');
+Route::delete('/lavados/{id}', [LavadosController::class, 'delete'])->name('lavados.delete');

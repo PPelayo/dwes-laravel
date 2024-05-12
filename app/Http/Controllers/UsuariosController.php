@@ -23,25 +23,33 @@ class UsuariosController extends Controller
     }
 
 
-    public function login()
+    public function login($route = null)
     {
 
-        return view('user.login');
+        return view('user.login', with(['route' => $route]));
     }
 
     function authenticate(Request $request)
     {
-        $datos = $request->validate([
+        $request->validate([
             'username' => 'required',
-            'password' => 'required'
+            'password' => 'required',
+            'route' => 'nullable'
         ]);
+        $userDatos = [
+            'username' => $request->username,
+            'password' => $request->password
+        ];
 
-        if(Auth::attempt($datos)){
+
+        if(Auth::attempt($userDatos)){
             $request->session()->regenerate();
 
+            if($request->route != null){
+                return redirect()->route($request->route);
+            }
             return redirect()->route('citas.index');
         }
-
         return back()->withErrors([
             'username' => 'El usuario y/o la contrasña no son correctos'
         ]);

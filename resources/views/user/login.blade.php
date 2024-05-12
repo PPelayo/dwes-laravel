@@ -110,9 +110,8 @@ main{
 
 
 
-        <form action="{{route('user.authenticate')}}" method="post" class="login-form">
+        <form action="{{route('user.authenticate', ['route' => Session::get('route')])}}" method="post" class="login-form">
             @csrf
-
             <label class="label-form" for="username">Usuario: </label>
             <input class="input-form" type="text" id="username" name='username' value="{{old('username')}}">
             @error('username')

@@ -69,26 +69,25 @@
                     body: formData
                 }).then(res => res.json())
                 .then(data => {
-
                     marcarErrores(data)
-                    console.log(data)
-                    if(data.isValid){
-                        //Las validaciones son validas, por lo que podemos intentar crear un lavado
-                        fetch("{{ route('lavados.store') }}", {
-                            method: 'POST',
-                            body: formData
-                        })
-                        .then(async res => res.json())
-                        .then(tryCreate => {
-                            marcarErrores(tryCreate)
-                            if(tryCreate.isValid){
-                                //El lavado a sido creado
-                                // window.location.href = "";
-                            }
-                        })
-                    }
                 })
+        }
+        function crearLavado(){
+            const form = $('#form-lavados')
 
+            const formData = new FormData(form);
+            fetch("{{ route('lavados.store') }}", {
+                method: 'POST',
+                body: formData
+            })
+            .then(async res => res.json())
+            .then(tryCreate => {
+                marcarErrores(tryCreate)
+                if(tryCreate.isValid){
+                    //El lavado a sido creado
+                    window.location.href = "{{ route('lavados.listar')}}";
+                }
+            })
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -96,7 +95,7 @@
 
             form.addEventListener('submit', (event) => {
                 event.preventDefault();
-                validarCampos();
+                crearLavado();
             })
 
             $$('input').forEach(input => {
