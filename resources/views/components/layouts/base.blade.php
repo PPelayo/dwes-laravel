@@ -13,11 +13,16 @@
 
 <body>
 
-    <head>
+    <header style="display: flex; gap:10px; flex-flow:row;">
         @auth
             <a href="{{route('user.logout')}}">Logout</a>
+            <a href="{{route('lavados.listar')}}">Mostrar Lavados</a>
+            <a href="{{route('lavados.create')}}">Crear Lavado</a>
+            <a href="{{route('citas.index')}}">Mostrar Citas</a>
+
         @endauth
-    </head>
+
+    </header>
 
     {{$slot}}
 </body>

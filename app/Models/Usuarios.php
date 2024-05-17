@@ -16,7 +16,7 @@ class Usuarios extends Authenticatable
     public $incrementing = false;
     protected $keyType = 'string';
 
-    protected $fillable = ['username', 'password'];
+    protected $fillable = ['username', 'password', 'google_id'];
 
     public $timestamps = false;
 

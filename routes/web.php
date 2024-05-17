@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CitaController;
+use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\LavadosController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
@@ -36,3 +37,6 @@ Route::get('auth/logout', [UsuariosController::class, 'logout'])->name('user.log
 
 Route::get('lavados/crear', [LavadosController::class, 'create'])->name('lavados.create');
 Route::get('lavados', [LavadosController::class, 'listar'])->name('lavados.listar');
+
+Route::get('google/callback', [GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
+Route::get('google/redirect', [GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');

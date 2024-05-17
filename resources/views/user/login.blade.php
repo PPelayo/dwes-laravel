@@ -34,20 +34,17 @@ main{
     background: aqua;
     border: 1px solid black;
     border-radius: 12px;
-
+    width: 450px;
 }
 
 .login-form{
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
     gap: 10px;
-    justify-items: start;
-    align-items: center;
-    padding: 10px;
-    text-align: center;
-    font-size: 1.3rem;
+    flex-flow: column nowrap;
+    padding: 12px;
+
 }
 
 .label-form{
@@ -63,6 +60,16 @@ main{
     display: block;
 }
 
+.buttons{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
 .submit{
     grid-column: span 2;
     justify-self: end;
@@ -75,7 +82,11 @@ main{
     color: rgb(182, 244, 244);
     transition: .3s all;
     margin-top: 5px;
-    width: 130px;
+    width: 150px;
+    cursor: pointer;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
 }
 
 .submit:hover{
@@ -112,21 +123,32 @@ main{
 
         <form action="{{route('user.authenticate', ['route' => Session::get('route')])}}" method="post" class="login-form">
             @csrf
-            <label class="label-form" for="username">Usuario: </label>
-            <input class="input-form" type="text" id="username" name='username' value="{{old('username')}}">
-            @error('username')
-                <x-MarcarError error="{{$message}}"/>
-            @enderror
+            <div>
+                <label class="label-form" for="username">Usuario: </label>
+                <input class="input-form" type="text" id="username" name='username' value="{{old('username')}}">
+                @error('username')
+                    <x-MarcarError error="{{$message}}"/>
+                @enderror
+            </div>
 
-            <label class="label-form" for="pass">Contraseña:</label>
-            <input class="input-form" type="password" id="pass" name='password' value="">
-            @error('password')
-                <x-MarcarError error="{{$message}}"/>
-            @enderror
+            <div>
+                <label class="label-form" for="pass">Contraseña:</label>
+                <input class="input-form" type="password" id="pass" name='password' value="">
+                @error('password')
+                    <x-MarcarError error="{{$message}}"/>
+                @enderror
 
-            <button type="submit" class="submit">
-                Entrar
-            </button>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="submit">
+                    Entrar
+                </button>
+
+                <a class="submit" href="{{ route('google.redirect') }}">
+                    Entrar con Google
+                </a>
+
+            </div>
 
         </form>
     </section>
